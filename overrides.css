@@ -17,6 +17,26 @@
   animation: portrait-float 4s ease-in-out infinite;
 }
 
+.mini-now-playing {
+  color: inherit;
+  text-decoration: none;
+  transition: transform .25s ease;
+}
+
+.mini-now-playing:hover {
+  transform: translateX(5px);
+}
+
+.discord-user {
+  color: inherit;
+  text-decoration: none;
+  transition: transform .25s ease;
+}
+
+.discord-user:hover {
+  transform: translateX(4px);
+}
+
 @keyframes portrait-float {
   50% {
     transform: scale(1.035) translateY(-4px);

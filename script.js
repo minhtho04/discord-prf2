@@ -3,10 +3,10 @@ const toast = document.querySelector("#toast");
 
 copyButton.addEventListener("click", async () => {
   try {
-    await navigator.clipboard.writeText("YOUR_DISCORD");
+    await navigator.clipboard.writeText("minji.no_support");
     toast.classList.add("show");
     window.setTimeout(() => toast.classList.remove("show"), 2200);
   } catch {
-    copyButton.textContent = "Discord: YOUR_DISCORD";
+    copyButton.textContent = "Discord: minji.no_support";
   }
 });
