@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#130d2c" />
-    <meta name="description" content="Góc nhỏ Discord đầy màu sắc của Minji." />
-    <title>Minji ✦ Discord Corner</title>
+    <meta name="theme-color" content="#090817" />
+    <meta name="description" content="Discord corner của Minji — music, vibes và những điều đang tạo." />
+    <title>Minji — Discord Corner</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -14,94 +14,68 @@
   </head>
   <body class="intro-active">
     <button class="intro-screen" id="intro-screen" type="button" aria-label="Mở profile và phát Spotify">
-      <span>Nhấp để tiếp tục...</span>
-      <i aria-hidden="true">⌄</i>
+      <span>Nhấp để tiếp tục...</span><i aria-hidden="true">⌄</i>
     </button>
-    <div class="noise" aria-hidden="true"></div>
-    <div class="orb orb-one" aria-hidden="true"></div>
-    <div class="orb orb-two" aria-hidden="true"></div>
-    <div class="stars" aria-hidden="true">
-      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-    </div>
 
-    <main class="site-shell">
-      <nav class="nav">
-        <a class="brand" href="#top" aria-label="Trang chủ Minji"><span>✦</span> MINJI<span class="brand-dot">.IO</span></a>
-        <div class="nav-links">
-          <a href="#about">Về mình</a>
-          <a href="#crew">Nhân vật</a>
-          <a href="#vibes">Vibes</a>
-        </div>
+    <main class="minji-page">
+      <nav class="minji-nav">
+        <a class="minji-brand" href="#top"><span>✦</span> MINJI<span>.IO</span></a>
+        <div><a href="#now-playing">Spotify</a><a href="#status">Discord</a></div>
       </nav>
 
-      <section class="hero" id="top">
+      <section class="minji-hero" id="top">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="online-dot"></span> currently online &amp; creating</p>
-          <h1>Xin chào,<br /><span>mình là Minji!</span></h1>
-          <p class="intro">Đây là góc internet nhỏ xinh dành cho những cuộc trò chuyện ấm áp, ý tưởng lấp lánh và chút phép màu của việc tạo ra điều mới.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="https://github.com/minhtho04" target="_blank" rel="noreferrer"><span>◉</span> GitHub</a>
-            <a class="button ghost" href="http://fi5.bot-hosting.net:21822/" target="_blank" rel="noreferrer">My Connections <span>↗</span></a>
-            <a class="button ghost" href="#about">Khám phá <span>↓</span></a>
+          <p class="eyebrow"><i></i> ONLINE SPACE / 2026</p>
+          <h1>Xin chào,<br /><span>mình là Minji.</span></h1>
+          <p class="minji-intro">Một góc nhỏ dành cho âm nhạc, những cuộc trò chuyện thật vui và các ý tưởng đang dần thành hình.</p>
+          <div class="minji-actions">
+            <a class="minji-button primary" href="https://github.com/minhtho04" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+            <a class="minji-button secondary" href="http://fi5.bot-hosting.net:21822/" target="_blank" rel="noreferrer">My Connections <span>↗</span></a>
           </div>
-          <div class="spotify-widget is-open" id="spotify-widget">
-            <button class="mini-now-playing" id="now-playing" type="button" aria-expanded="true" aria-controls="spotify-embed" aria-label="Mở Spotify player">
-              <span class="spotify-caption">LISTENING TO SPOTIFY <i>●</i></span>
-              <span class="spotify-track"><span class="album-art" id="now-playing-art">♫</span><span><b id="now-playing-title">Spotify is quiet</b><small id="now-playing-detail">Click to play my playlist</small></span><span class="sound-bars" aria-label="Nhạc đang phát"><i></i><i></i><i></i><i></i></span></span>
-            </button>
-            <div class="spotify-embed" id="spotify-embed"><div id="spotify-player" title="Spotify player"></div></div>
-          </div>
+          <div class="hero-stats"><span><b>01</b> Discord profile</span><span><b>∞</b> Good vibes</span></div>
         </div>
 
-        <div class="hero-art" aria-label="Mascot hoạt hình đang vẫy tay">
-          <div class="chat-bubble bubble-hello">hello there! <span>✦</span></div>
-          <div class="chat-bubble bubble-heart">♡</div>
-          <div class="spark spark-one">✦</div><div class="spark spark-two">✦</div><div class="spark spark-three">✧</div>
-          <div class="mascot-card">
-            <div class="mascot-shadow"></div>
-            <img class="character-image" src="assets/jadoo-full.jpg" alt="Nhân vật hoạt hình trong tư thế vui nhộn" />
-            <svg class="mascot" viewBox="0 0 390 440" role="img" aria-label="Cô bé mascot dễ thương tóc đen hai bên đang vẫy tay">
-              <g class="back-hair"><path d="M118 151C70 123 39 87 55 55c14-28 49-25 61 4 9 22 10 40 27 61"/><path d="M271 151c49-28 80-64 63-96-14-28-49-25-61 4-9 22-10 40-27 61"/></g>
-              <ellipse class="ground-shadow" cx="194" cy="400" rx="126" ry="16"/>
-              <g class="body"><path class="yellow-hoodie" d="M88 396c4-86 47-130 106-130 62 0 105 46 109 130H88Z"/><path class="hoodie-collar" d="M159 269c8 22 20 31 36 31 18 0 30-10 38-31l-38 37-36-37Z"/><path class="hoodie-line" d="M194 316v79"/></g>
-              <g class="face"><path class="skin" d="M101 169c0-80 37-130 91-130 61 0 100 53 95 130v69c0 71-36 111-93 111-56 0-93-40-93-111v-69Z"/><path class="fringe" d="M91 150C92 70 139 22 196 22c68 0 106 58 92 145-16-34-28-62-31-105-27 31-94 26-166 88Z"/><ellipse class="eye" cx="153" cy="195" rx="10" ry="14"/><ellipse class="eye" cx="237" cy="195" rx="10" ry="14"/><path class="eye-shine" d="M150 190h3M234 190h3"/><ellipse class="blush" cx="128" cy="224" rx="19" ry="9"/><ellipse class="blush" cx="260" cy="224" rx="19" ry="9"/><path class="mouth" d="M177 238c11 10 25 10 35 0"/></g>
-              <g class="wave-arm"><path class="skin arm" d="M263 292c29-52 49-85 71-108"/><path class="hand" d="M328 188c9-17 30-11 28 3 15-6 25 13 11 23 13 10 3 29-12 25-4 17-25 13-26-3-13 4-23-13-12-24-13-9 0-27 11-20Z"/></g>
-              <g class="hair-ties"><circle cx="87" cy="112" r="9"/><circle cx="302" cy="112" r="9"/></g>
-            </svg>
-            <div class="card-label"><span class="status-dot"></span> Minji is happy</div>
-          </div>
+        <div class="minji-profile-card" aria-label="Discord profile của Minji">
+          <span class="profile-glow glow-one"></span><span class="profile-glow glow-two"></span>
+          <div class="profile-header"><span>DISCORD PRESENCE</span><i id="hero-status" class="presence-dot status--online" title="Online"></i></div>
+          <div class="profile-avatar-wrap"><img id="hero-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar Discord của Minji" /></div>
+          <div class="profile-identity"><h2 id="hero-name">Minji No Support</h2><p id="hero-handle">@minji.no_support</p></div>
+          <div class="profile-tag">✦ building good vibes</div>
+          <div class="profile-lines"><i></i><i></i><i></i></div>
         </div>
       </section>
 
-      <section class="about section" id="about">
-        <div class="section-title"><p class="eyebrow">01 / about me</p><h2>Một chút về <span>góc nhỏ này</span></h2></div>
-        <div class="about-grid">
-          <article class="glass-card about-main"><span class="card-icon">☁</span><h3>Coding, chatting, creating.</h3><p>Mình thích biến những ý tưởng nho nhỏ thành website, hình ảnh và trải nghiệm đáng nhớ. Nếu bạn cũng thích điều đó, chúng ta sẽ hợp nhau đấy.</p><div class="tags"><span>UI/UX</span><span>Web</span><span>Gaming</span><span>Anime</span></div></article>
-          <article class="glass-card status-card"><p class="card-kicker">LIVE DISCORD STATUS</p><div class="discord-user"><img class="avatar-mini avatar-image" id="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Discord avatar" /><span><b id="discord-name">Minji No Support</b><small id="discord-handle">@minji.no_support</small></span><i class="status-dot status--online" id="discord-status" title="Online"></i></div><div class="activity"><span class="activity-icon" id="discord-activity-icon">✦</span><span><b id="discord-activity-name">Minji vibes</b><small id="discord-activity-detail">Connecting to Discord presence...</small></span><em id="discord-activity-time">Live</em></div></article>
+      <section class="minji-dashboard">
+        <article class="minji-panel now-playing-panel" id="now-playing">
+          <div class="panel-label"><span>01 / NOW PLAYING</span><i>♫</i></div>
+          <button class="spotify-launch" id="spotify-launch" type="button" aria-expanded="false" aria-controls="spotify-embed">
+            <span class="album-art" id="now-playing-art">♫</span>
+            <span class="track-copy"><b id="now-playing-title">Spotify is quiet</b><small id="now-playing-detail">Click to play my playlist</small></span>
+            <span class="equalizer" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          </button>
+          <div class="spotify-embed" id="spotify-embed"><div id="spotify-player" title="Spotify player"></div></div>
+          <p class="panel-hint">Bấm để mở player và nghe cùng Minji.</p>
+        </article>
+
+        <article class="minji-panel discord-panel" id="status">
+          <div class="panel-label"><span>02 / DISCORD STATUS</span><i>◉</i></div>
+          <div class="discord-user-row"><img id="discord-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Avatar Discord" /><span><b id="discord-name">Minji No Support</b><small id="discord-handle">@minji.no_support</small></span><i class="presence-dot status--online" id="discord-status" title="Online"></i></div>
+          <div class="discord-activity"><span id="discord-activity-icon">✦</span><div><b id="discord-activity-name">Minji vibes</b><small id="discord-activity-detail">Connecting to Discord presence...</small></div><em id="discord-activity-time">Live</em></div>
+        </article>
+      </section>
+
+      <section class="minji-moments" id="vibes">
+        <div class="moment-heading"><p class="eyebrow">03 / MINJI SPACE</p><h2>Đang làm mình <span>lấp lánh</span></h2></div>
+        <div class="moment-grid">
+          <article class="moment-card mint"><span>◉</span><p>DISCORD</p><h3>Good chats</h3><small>online, friendly và luôn có nhạc.</small><i>01</i></article>
+          <article class="moment-card lilac"><span>♫</span><p>SPOTIFY</p><h3>Late-night mood</h3><small>playlist cho những giờ thật chill.</small><i>02</i></article>
+          <article class="moment-card peach"><span>✦</span><p>CREATIVE</p><h3>Build &amp; create</h3><small>web, visuals và nhiều ý tưởng nhỏ.</small><i>03</i></article>
         </div>
       </section>
 
-      <section class="crew section" id="crew">
-        <div class="section-title"><p class="eyebrow">02 / meet the crew</p><h2>Những người bạn của <span>Minji</span></h2></div>
-        <div class="crew-grid">
-          <article class="crew-card crew-card-large"><img src="assets/crew-friends.jpg" alt="Nhóm bạn hoạt hình" /><div class="crew-overlay"><span>✦</span><p>THE WHOLE CREW</p><h3>Minji &amp; những người bạn</h3></div></article>
-          <article class="crew-card"><img src="assets/crew-minji.jpg" alt="Hai người bạn hoạt hình" /><div class="crew-overlay"><span>♡</span><p>BESTIE ENERGY</p><h3>Minji × bestie</h3></div></article>
-          <article class="crew-card"><img src="assets/crew-family.jpg" alt="Góc gia đình hoạt hình" /><div class="crew-overlay"><span>☁</span><p>HOME SWEET HOME</p><h3>Góc nhỏ của Minji</h3></div></article>
-        </div>
-      </section>
-
-      <section class="vibes section" id="vibes">
-        <div class="section-title"><p class="eyebrow">03 / current vibes</p><h2>Những thứ làm mình <span>lấp lánh</span></h2></div>
-        <div class="vibe-grid">
-          <article class="vibe-card purple"><span>🎮</span><h3>Gaming nights</h3><p>Co-op, cozy games và những pha clutch không ai ngờ tới.</p><i>01</i></article>
-          <article class="vibe-card pink"><span>🎨</span><h3>Creative sparks</h3><p>Thiết kế, moodboard và màu sắc khiến một ngày đẹp hơn.</p><i>02</i></article>
-          <article class="vibe-card blue"><span>☕</span><h3>Late-night talks</h3><p>Một cốc gì đó ấm và những cuộc trò chuyện thật sâu.</p><i>03</i></article>
-        </div>
-      </section>
-
-      <footer><a class="brand" href="#top"><span>✦</span> MINJI<span class="brand-dot">.IO</span></a><p>Made with good vibes &amp; a little sparkle.</p><button id="copy-discord" type="button">Copy Discord: minji.no_support</button></footer>
+      <footer class="minji-footer"><a class="minji-brand" href="#top"><span>✦</span> MINJI<span>.IO</span></a><p>Made with music, pixels &amp; good vibes.</p><button id="copy-discord" type="button">Copy Discord</button></footer>
     </main>
-    <div class="toast" id="toast" role="status">Đã copy Discord ID ✦</div>
+    <div class="toast" id="toast" role="status">Đã copy Discord ✦</div>
     <script src="script.js"></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
   </body>
