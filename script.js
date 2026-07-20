@@ -12,11 +12,20 @@ const discordElements = {
   activityTime: document.querySelector("#discord-activity-time"),
 };
 const nowPlayingElements = {
-  link: document.querySelector("#now-playing"),
+  button: document.querySelector("#now-playing"),
+  widget: document.querySelector("#spotify-widget"),
+  player: document.querySelector("#spotify-player"),
   art: document.querySelector("#now-playing-art"),
   title: document.querySelector("#now-playing-title"),
   detail: document.querySelector("#now-playing-detail"),
 };
+
+const spotifyPlaylistEmbed = "https://open.spotify.com/embed/playlist/5muSk2zfQ3LI70S64jbrX7?utm_source=generator";
+
+nowPlayingElements.button.addEventListener("click", () => {
+  const isOpen = nowPlayingElements.widget.classList.toggle("is-open");
+  nowPlayingElements.button.setAttribute("aria-expanded", String(isOpen));
+});
 
 copyButton.addEventListener("click", async () => {
   try {
@@ -73,18 +82,18 @@ function renderNowPlaying(spotify) {
     nowPlayingElements.art.textContent = "";
     nowPlayingElements.art.style.backgroundImage = `url("${spotify.album_art_url}")`;
     nowPlayingElements.title.textContent = spotify.song;
-    nowPlayingElements.detail.textContent = spotify.artist;
-    nowPlayingElements.link.href = `https://open.spotify.com/track/${spotify.track_id}`;
-    nowPlayingElements.link.setAttribute("aria-label", `Mở ${spotify.song} trên Spotify`);
+    nowPlayingElements.detail.textContent = `${spotify.artist} · Click to play`;
+    nowPlayingElements.button.setAttribute("aria-label", `Mở ${spotify.song} trên Spotify`);
+    nowPlayingElements.player.src = `https://open.spotify.com/embed/track/${spotify.track_id}?utm_source=generator`;
     return;
   }
 
   nowPlayingElements.art.textContent = "♫";
   nowPlayingElements.art.style.backgroundImage = "";
   nowPlayingElements.title.textContent = "Spotify is quiet";
-  nowPlayingElements.detail.textContent = "Open my playlist";
-  nowPlayingElements.link.href = "https://open.spotify.com/playlist/5muSk2zfQ3LI70S64jbrX7?si=3da250f020e94909";
-  nowPlayingElements.link.setAttribute("aria-label", "Mở Spotify playlist");
+  nowPlayingElements.detail.textContent = "Click to play my playlist";
+  nowPlayingElements.button.setAttribute("aria-label", "Mở Spotify playlist");
+  nowPlayingElements.player.src = spotifyPlaylistEmbed;
 }
 
 async function refreshDiscordPresence() {

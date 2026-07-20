@@ -40,10 +40,15 @@
             <a class="button ghost" href="http://fi5.bot-hosting.net:21822/" target="_blank" rel="noreferrer">Jadoo Characters <span>↗</span></a>
             <a class="button ghost" href="#about">Khám phá <span>↓</span></a>
           </div>
-          <a class="mini-now-playing" id="now-playing" href="https://open.spotify.com/playlist/5muSk2zfQ3LI70S64jbrX7?si=3da250f020e94909" target="_blank" rel="noreferrer" aria-label="Mở Spotify">
-            <span class="spotify-caption">LISTENING TO SPOTIFY <i>●</i></span>
-            <span class="spotify-track"><span class="album-art" id="now-playing-art">♫</span><span><b id="now-playing-title">Spotify is quiet</b><small id="now-playing-detail">Open my playlist</small></span><span class="sound-bars" aria-label="Nhạc đang phát"><i></i><i></i><i></i><i></i></span></span>
-          </a>
+          <div class="spotify-widget" id="spotify-widget">
+            <button class="mini-now-playing" id="now-playing" type="button" aria-expanded="false" aria-controls="spotify-embed" aria-label="Mở Spotify player">
+              <span class="spotify-caption">LISTENING TO SPOTIFY <i>●</i></span>
+              <span class="spotify-track"><span class="album-art" id="now-playing-art">♫</span><span><b id="now-playing-title">Spotify is quiet</b><small id="now-playing-detail">Click to play my playlist</small></span><span class="sound-bars" aria-label="Nhạc đang phát"><i></i><i></i><i></i><i></i></span></span>
+            </button>
+            <div class="spotify-embed" id="spotify-embed">
+              <iframe id="spotify-player" title="Spotify player" src="https://open.spotify.com/embed/playlist/5muSk2zfQ3LI70S64jbrX7?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+          </div>
         </div>
 
         <div class="hero-art" aria-label="Mascot hoạt hình đang vẫy tay">
