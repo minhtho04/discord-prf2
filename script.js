@@ -2,6 +2,7 @@ const discordId = "699955801887866911";
 const introScreen = document.querySelector("#intro-screen");
 const copyButton = document.querySelector("#copy-discord");
 const toast = document.querySelector("#toast");
+const cursorGlow = document.querySelector("#cursor-glow");
 const discordElements = {
   avatar: document.querySelector("#discord-avatar"),
   name: document.querySelector("#discord-name"),
@@ -150,6 +151,33 @@ window.addEventListener("keydown", (event) => {
     document.body.classList.remove("modal-open");
   }
 });
+
+if (window.matchMedia("(pointer: fine)").matches) {
+  window.addEventListener("pointermove", (event) => {
+    cursorGlow.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
+    cursorGlow.classList.add("is-visible");
+  });
+  window.addEventListener("pointerout", (event) => {
+    if (!event.relatedTarget) cursorGlow.classList.remove("is-visible");
+  });
+}
+
+const revealTargets = document.querySelectorAll(".minji-character, .minji-dashboard, .minji-cast, .minji-moments");
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-revealed");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.14 });
+  revealTargets.forEach((target) => {
+    target.classList.add("scroll-reveal");
+    revealObserver.observe(target);
+  });
+} else {
+  revealTargets.forEach((target) => target.classList.add("is-revealed"));
+}
 copyButton.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("minji.no_support");
