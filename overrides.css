@@ -164,6 +164,49 @@
   color: transparent;
 }
 
+body.intro-active {
+  overflow: hidden;
+}
+
+.intro-screen {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  background: #030303;
+  color: #fff;
+  cursor: pointer;
+  font: 600 20px "Be Vietnam Pro", sans-serif;
+  letter-spacing: .2px;
+  transition: opacity .55s ease, visibility .55s ease;
+}
+
+.intro-screen i {
+  justify-self: center;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: .5;
+  animation: intro-bounce 1.8s ease-in-out infinite;
+}
+
+.intro-screen.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes intro-bounce {
+  50% {
+    transform: translateY(8px);
+  }
+}
+
 .status-dot.status--idle {
   background: #fbbf24;
   box-shadow: 0 0 0 4px rgba(251, 191, 36, .12);

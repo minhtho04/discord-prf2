@@ -1,6 +1,7 @@
 const copyButton = document.querySelector("#copy-discord");
 const toast = document.querySelector("#toast");
 const discordId = "699955801887866911";
+const introScreen = document.querySelector("#intro-screen");
 const discordElements = {
   avatar: document.querySelector("#discord-avatar"),
   name: document.querySelector("#discord-name"),
@@ -23,7 +24,15 @@ const nowPlayingElements = {
 const spotifyController = {
   instance: null,
   entity: "spotify:playlist:5muSk2zfQ3LI70S64jbrX7",
+  playRequested: false,
 };
+
+introScreen.addEventListener("click", () => {
+  document.body.classList.remove("intro-active");
+  introScreen.classList.add("is-hidden");
+  spotifyController.playRequested = true;
+  spotifyController.instance?.play();
+});
 
 nowPlayingElements.button.addEventListener("click", () => {
   nowPlayingElements.widget.classList.add("is-open");
@@ -37,6 +46,7 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
     { width: "100%", height: 152, uri: spotifyController.entity },
     (controller) => {
       spotifyController.instance = controller;
+      if (spotifyController.playRequested) controller.play();
     },
   );
 };
