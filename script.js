@@ -3,6 +3,7 @@ const introScreen = document.querySelector("#intro-screen");
 const copyButton = document.querySelector("#copy-discord");
 const toast = document.querySelector("#toast");
 const cursorGlow = document.querySelector("#cursor-glow");
+const ambientParticles = document.querySelector("#ambient-particles");
 const discordElements = {
   avatar: document.querySelector("#discord-avatar"),
   name: document.querySelector("#discord-name"),
@@ -177,6 +178,19 @@ if ("IntersectionObserver" in window) {
   });
 } else {
   revealTargets.forEach((target) => target.classList.add("is-revealed"));
+}
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const particles = Array.from({ length: 38 }, (_, index) => {
+    const particle = document.createElement("i");
+    particle.className = index % 3 === 0 ? "star-particle" : "snow-particle";
+    particle.style.setProperty("--left", `${Math.random() * 100}%`);
+    particle.style.setProperty("--delay", `${Math.random() * -15}s`);
+    particle.style.setProperty("--duration", `${9 + Math.random() * 10}s`);
+    particle.style.setProperty("--size", `${3 + Math.random() * 6}px`);
+    return particle;
+  });
+  ambientParticles.append(...particles);
 }
 copyButton.addEventListener("click", async () => {
   try {
