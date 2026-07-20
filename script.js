@@ -18,6 +18,12 @@ const heroElements = {
   handle: document.querySelector("#hero-handle"),
   status: document.querySelector("#hero-status"),
 };
+const characterElements = {
+  avatar: document.querySelector("#minji-character-avatar"),
+  name: document.querySelector("#minji-character-name"),
+  handle: document.querySelector("#minji-character-handle"),
+  status: document.querySelector("#character-status"),
+};
 const playerElements = {
   launch: document.querySelector("#spotify-launch"),
   embed: document.querySelector("#spotify-embed"),
@@ -30,8 +36,9 @@ const spotifyController = { instance: null, entity: "spotify:playlist:5muSk2zfQ3
 
 function setStatus(status) {
   const labels = { online: "Online", idle: "Idle", dnd: "Do not disturb", offline: "Offline" };
-  [discordElements.status, heroElements.status].forEach((element) => {
-    element.className = `presence-dot status--${status}`;
+  [discordElements.status, heroElements.status, characterElements.status].forEach((element) => {
+    const positionClass = element === characterElements.status ? "character-presence " : "";
+    element.className = `${positionClass}presence-dot status--${status}`;
     element.title = labels[status] ?? "Offline";
   });
 }
@@ -92,9 +99,9 @@ async function refreshDiscordPresence() {
       ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${avatarExtension}?size=256`
       : "https://cdn.discordapp.com/embed/avatars/0.png";
     const displayName = user.global_name || user.display_name || user.username;
-    [discordElements.avatar, heroElements.avatar].forEach((avatar) => { avatar.src = avatarUrl; });
-    [discordElements.name, heroElements.name].forEach((name) => { name.textContent = displayName; });
-    [discordElements.handle, heroElements.handle].forEach((handle) => { handle.textContent = `@${user.username}`; });
+    [discordElements.avatar, heroElements.avatar, characterElements.avatar].forEach((avatar) => { avatar.src = avatarUrl; });
+    [discordElements.name, heroElements.name, characterElements.name].forEach((name) => { name.textContent = displayName; });
+    [discordElements.handle, heroElements.handle, characterElements.handle].forEach((handle) => { handle.textContent = `@${user.username}`; });
     setStatus(presence.discord_status);
     renderActivity(presence);
   } catch {
