@@ -74,7 +74,7 @@ async function refreshDiscordPresence() {
       ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${avatarExtension}?size=128`
       : "https://cdn.discordapp.com/embed/avatars/0.png";
     discordElements.name.textContent = displayName;
-    discordElements.handle.textContent = `@${user.username} · Open Discord profile ↗`;
+    discordElements.handle.textContent = `@${user.username}`;
     setDiscordStatus(presence.discord_status);
     renderDiscordActivity(presence);
   } catch {
