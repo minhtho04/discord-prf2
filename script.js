@@ -20,12 +20,31 @@ const nowPlayingElements = {
   detail: document.querySelector("#now-playing-detail"),
 };
 
-const spotifyPlaylistEmbed = "https://open.spotify.com/embed/playlist/5muSk2zfQ3LI70S64jbrX7?utm_source=generator";
+const spotifyController = {
+  instance: null,
+  entity: "spotify:playlist:5muSk2zfQ3LI70S64jbrX7",
+};
 
 nowPlayingElements.button.addEventListener("click", () => {
-  const isOpen = nowPlayingElements.widget.classList.toggle("is-open");
-  nowPlayingElements.button.setAttribute("aria-expanded", String(isOpen));
+  nowPlayingElements.widget.classList.add("is-open");
+  nowPlayingElements.button.setAttribute("aria-expanded", "true");
+  spotifyController.instance?.play();
 });
+
+window.onSpotifyIframeApiReady = (IFrameAPI) => {
+  IFrameAPI.createController(
+    nowPlayingElements.player,
+    { width: "100%", height: 152, uri: spotifyController.entity },
+    (controller) => {
+      spotifyController.instance = controller;
+    },
+  );
+};
+
+function loadSpotifyEntity(entity) {
+  spotifyController.entity = entity;
+  spotifyController.instance?.loadEntity(entity);
+}
 
 copyButton.addEventListener("click", async () => {
   try {
@@ -84,7 +103,7 @@ function renderNowPlaying(spotify) {
     nowPlayingElements.title.textContent = spotify.song;
     nowPlayingElements.detail.textContent = `${spotify.artist} · Click to play`;
     nowPlayingElements.button.setAttribute("aria-label", `Mở ${spotify.song} trên Spotify`);
-    nowPlayingElements.player.src = `https://open.spotify.com/embed/track/${spotify.track_id}?utm_source=generator`;
+    loadSpotifyEntity(`spotify:track:${spotify.track_id}`);
     return;
   }
 
@@ -93,7 +112,7 @@ function renderNowPlaying(spotify) {
   nowPlayingElements.title.textContent = "Spotify is quiet";
   nowPlayingElements.detail.textContent = "Click to play my playlist";
   nowPlayingElements.button.setAttribute("aria-label", "Mở Spotify playlist");
-  nowPlayingElements.player.src = spotifyPlaylistEmbed;
+  loadSpotifyEntity("spotify:playlist:5muSk2zfQ3LI70S64jbrX7");
 }
 
 async function refreshDiscordPresence() {
