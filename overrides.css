@@ -28,3 +28,27 @@ body::after { position: fixed; z-index: -1; inset: 0; opacity: .18; background-i
 body.intro-active { overflow: hidden; }.intro-screen { position: fixed; z-index: 100; inset: 0; display: grid; place-content: center; gap: 13px; width: 100%; min-height: 100vh; border: 0; background: #020204; color: #fff; cursor: pointer; font: 600 20px "Be Vietnam Pro",sans-serif; letter-spacing: .2px; }.intro-screen i { justify-self: center; font-size: 42px; font-style: normal; animation: arrow-bounce 1.7s ease-in-out infinite; }.intro-screen.is-hidden { visibility: hidden; opacity: 0; transition: opacity .55s ease,visibility .55s ease; pointer-events: none; }@keyframes arrow-bounce { 50% { transform: translateY(8px); } }
 @media (max-width: 800px) { .minji-page { width: min(100% - 30px, 620px); }.minji-hero { grid-template-columns: 1fr; gap: 42px; min-height: 0; padding: 8px 0 0; }.minji-profile-card { min-height: 350px; max-width: 420px; width: 100%; margin: 0 auto; }.minji-dashboard { grid-template-columns: 1fr; margin: 55px 0 72px; }.moment-grid { grid-template-columns: 1fr; }.moment-card { min-height: 180px; }.minji-nav { padding-bottom: 30px; } }
 @media (max-width: 480px) { .minji-page { width: min(100% - 24px, 620px); }.minji-nav div { gap: 14px; }.minji-nav a:not(.minji-brand) { font-size: 10px; }.hero-copy h1 { font-size: 47px; }.minji-footer { align-items: flex-start; flex-direction: column; }.minji-footer p { order: 3; }.minji-dashboard { gap: 14px; }.minji-panel { padding: 18px; } }
+
+/* Motion layer: Minji is the primary visual, not an external character image. */
+.minji-profile-card { animation: profile-enter .75s cubic-bezier(.2,.8,.2,1) both, card-float 5.5s ease-in-out 1s infinite; }
+.profile-avatar-wrap { isolation: isolate; animation: avatar-breathe 3.2s ease-in-out infinite; }
+.profile-avatar-wrap img { position: relative; z-index: 2; }
+.avatar-ring { position: absolute; z-index: 0; inset: -14px; border: 1px solid rgba(177, 144, 255, .52); border-radius: 50%; animation: orbit-spin 9s linear infinite; }
+.avatar-ring::after { position: absolute; top: 8%; left: 50%; width: 8px; height: 8px; border-radius: 50%; background: #fff0a9; box-shadow: 0 0 14px #fff0a9; content: ""; }
+.ring-two { inset: -27px; border-style: dashed; border-color: rgba(110, 239, 171, .38); animation-direction: reverse; animation-duration: 13s; }
+.ring-two::after { top: auto; bottom: 7%; background: #7ef5b0; box-shadow: 0 0 14px #7ef5b0; }
+.main-character-badge { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: max-content; max-width: calc(100% - 42px); margin: 16px auto -6px; padding: 7px 10px; border: 1px solid rgba(255, 227, 145, .32); border-radius: 999px; background: rgba(255, 225, 130, .09); color: #fff0ad; font-size: 8px; font-weight: 800; letter-spacing: 1px; animation: badge-shimmer 2.8s ease-in-out infinite; }
+.main-character-badge span { font-size: 11px; }
+.profile-glow { animation: glow-drift 6s ease-in-out infinite alternate; }.glow-two { animation-delay: -3s; }
+.profile-lines i { animation: bars-pulse 1.25s ease-in-out infinite; }.profile-lines i:nth-child(2) { animation-delay: .17s; }.profile-lines i:nth-child(3) { animation-delay: .34s; }
+.minji-panel { animation: panel-enter .65s cubic-bezier(.2,.8,.2,1) both; }.discord-panel { animation-delay: .12s; }
+.moment-card { transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease; animation: panel-enter .65s cubic-bezier(.2,.8,.2,1) both; }.moment-card:nth-child(2) { animation-delay: .1s; }.moment-card:nth-child(3) { animation-delay: .2s; }.moment-card:hover { transform: translateY(-8px) rotate(-.5deg); border-color: rgba(255,255,255,.34); box-shadow: 0 28px 48px rgba(0,0,0,.28); }.moment-card:hover::after { animation: orbit-spin 6s linear infinite; }
+@keyframes profile-enter { from { opacity: 0; transform: translateY(24px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes panel-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes card-float { 50% { transform: translateY(-10px); } }
+@keyframes avatar-breathe { 50% { transform: scale(1.045); } }
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+@keyframes glow-drift { to { transform: translate(28px, 20px) scale(1.14); } }
+@keyframes badge-shimmer { 50% { border-color: rgba(255, 235, 156, .8); box-shadow: 0 0 24px rgba(255, 225, 130, .16); } }
+@keyframes bars-pulse { 50% { transform: scaleY(.46); opacity: .55; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
