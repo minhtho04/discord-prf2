@@ -24,6 +24,14 @@ const characterElements = {
   handle: document.querySelector("#minji-character-handle"),
   status: document.querySelector("#character-status"),
 };
+const modalElements = {
+  modal: document.querySelector("#character-modal"),
+  open: document.querySelector("#character-open"),
+  closes: document.querySelectorAll("[data-modal-close]"),
+  avatar: document.querySelector("#minji-modal-avatar"),
+  name: document.querySelector("#minji-modal-name"),
+  handle: document.querySelector("#minji-modal-handle"),
+};
 const playerElements = {
   launch: document.querySelector("#spotify-launch"),
   embed: document.querySelector("#spotify-embed"),
@@ -99,9 +107,9 @@ async function refreshDiscordPresence() {
       ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${avatarExtension}?size=256`
       : "https://cdn.discordapp.com/embed/avatars/0.png";
     const displayName = user.global_name || user.display_name || user.username;
-    [discordElements.avatar, heroElements.avatar, characterElements.avatar].forEach((avatar) => { avatar.src = avatarUrl; });
-    [discordElements.name, heroElements.name, characterElements.name].forEach((name) => { name.textContent = displayName; });
-    [discordElements.handle, heroElements.handle, characterElements.handle].forEach((handle) => { handle.textContent = `@${user.username}`; });
+    [discordElements.avatar, heroElements.avatar, characterElements.avatar, modalElements.avatar].forEach((avatar) => { avatar.src = avatarUrl; });
+    [discordElements.name, heroElements.name, characterElements.name, modalElements.name].forEach((name) => { name.textContent = displayName; });
+    [discordElements.handle, heroElements.handle, characterElements.handle, modalElements.handle].forEach((handle) => { handle.textContent = `@${user.username}`; });
     setStatus(presence.discord_status);
     renderActivity(presence);
   } catch {
@@ -125,6 +133,23 @@ introScreen.addEventListener("click", () => {
   openPlayer(true);
 });
 playerElements.launch.addEventListener("click", () => openPlayer(true));
+modalElements.open.addEventListener("click", () => {
+  modalElements.modal.classList.add("is-open");
+  modalElements.modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+});
+modalElements.closes.forEach((closeButton) => closeButton.addEventListener("click", () => {
+  modalElements.modal.classList.remove("is-open");
+  modalElements.modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}));
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && modalElements.modal.classList.contains("is-open")) {
+    modalElements.modal.classList.remove("is-open");
+    modalElements.modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+});
 copyButton.addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText("minji.no_support");

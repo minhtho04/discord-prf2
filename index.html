@@ -62,6 +62,7 @@
             <article><span>☁</span><b>Cozy energy</b><small>soft chats &amp; warm vibes</small></article>
           </div>
           <div class="character-signature"><i>“</i><p>make it cute, make it yours.</p><span>— Minji’s rule</span></div>
+          <button class="character-open" id="character-open" type="button">Mở hồ sơ đầy đủ <span>↗</span></button>
         </div>
       </section>
 
@@ -104,6 +105,32 @@
 
       <footer class="minji-footer"><a class="minji-brand" href="#top"><span>✦</span> MINJI<span>.IO</span></a><p>Made with music, pixels &amp; good vibes.</p><button id="copy-discord" type="button">Copy Discord</button></footer>
     </main>
+    <div class="character-modal" id="character-modal" aria-hidden="true">
+      <button class="modal-backdrop" data-modal-close type="button" aria-label="Đóng hồ sơ Minji"></button>
+      <article class="character-dialog" role="dialog" aria-modal="true" aria-labelledby="character-dialog-title">
+        <button class="modal-close" data-modal-close type="button" aria-label="Đóng">×</button>
+        <aside class="dialog-identity">
+          <div class="dialog-avatar"><img id="minji-modal-avatar" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="Chân dung Minji" /><span></span></div>
+          <h2 id="minji-modal-name">Minji No Support</h2><p id="minji-modal-handle">@minji.no_support</p>
+          <div class="dialog-facts"><span><b>Vai trò:</b><i>Bạn thân của Jadoo</i></span><span><b>Giới tính:</b><i>Nữ</i></span><span><b>Sở thích:</b><i>Violin &amp; hội hoạ</i></span></div>
+          <small>✦ main character profile</small>
+        </aside>
+        <div class="dialog-content">
+          <p class="dialog-kicker">✦ MINJI CHARACTER FILE</p><h2 id="character-dialog-title">📖 Tiểu Sử Nhân Vật</h2>
+          <p class="dialog-bio">Minji là người bạn thân thiết, dịu dàng và luôn biết lắng nghe. Cô ấy thích hội hoạ, yêu tiếng đàn violin và thường đồng hành cùng Jadoo trong những cuộc phiêu lưu nhỏ mỗi ngày.</p>
+          <h3>▤ Chỉ Số Nổi Bật</h3>
+          <div class="character-stats">
+            <div class="stat-row"><span>Sức mạnh <b>50%</b></span><i><em style="--level:50%"></em></i></div>
+            <div class="stat-row"><span>Ham ăn <b>60%</b></span><i><em style="--level:60%"></em></i></div>
+            <div class="stat-row"><span>Dễ thương <b>90%</b></span><i><em style="--level:90%"></em></i></div>
+            <div class="stat-row"><span>Học tập <b>92%</b></span><i><em style="--level:92%"></em></i></div>
+            <div class="stat-row"><span>Điệu đà <b>65%</b></span><i><em style="--level:65%"></em></i></div>
+          </div>
+          <div class="likes-grid"><article class="like-card"><h4>● Thích</h4><p>✓ Chơi đàn violin</p><p>✓ Đọc sách &amp; vẽ tranh</p></article><article class="dislike-card"><h4>● Ghét</h4><p>× Bạo lực</p><p>× Bị điểm kém</p></article></div>
+          <div class="fun-fact"><span>💡</span><div><b>Bí mật thú vị (Fun Fact)</b><p>Minji ước mơ trở thành nghệ sĩ violin tài năng và kiên trì luyện tập mỗi ngày.</p></div></div>
+        </div>
+      </article>
+    </div>
     <div class="toast" id="toast" role="status">Đã copy Discord ✦</div>
     <script src="script.js"></script>
     <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
