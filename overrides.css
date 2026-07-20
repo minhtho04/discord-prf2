@@ -1,0 +1,30 @@
+.mascot-card {
+  width: 410px;
+  height: 330px;
+  border-radius: 32px;
+}
+
+.mascot {
+  display: none;
+}
+
+.character-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: portrait-float 4s ease-in-out infinite;
+}
+
+@keyframes portrait-float {
+  50% {
+    transform: scale(1.035) translateY(-4px);
+  }
+}
+
+@media (max-width: 760px) {
+  .mascot-card {
+    transform: scale(.86);
+  }
+}
