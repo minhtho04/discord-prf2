@@ -7,7 +7,7 @@ body::after { position: fixed; z-index: -1; inset: 0; opacity: .18; background-i
 .minji-page { width: min(1130px, calc(100% - 40px)); margin: 0 auto; padding: 25px 0 35px; }
 .minji-nav { display: flex; align-items: center; justify-content: space-between; padding: 8px 0 46px; }
 .minji-brand { color: #fff; font: 600 20px Fredoka, sans-serif; letter-spacing: .5px; text-decoration: none; }.minji-brand > span:first-child { color: #f9d570; }.minji-brand > span:last-child { color: #a39bbd; }
-.minji-nav div { display: flex; gap: 25px; }.minji-nav a:not(.minji-brand) { color: #b7b1ca; font-size: 12px; font-weight: 700; text-decoration: none; }.minji-nav a:not(.minji-brand):hover { color: #fff; }
+.minji-nav div { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 25px; }.minji-nav a:not(.minji-brand) { color: #b7b1ca; font-size: 12px; font-weight: 700; text-decoration: none; }.minji-nav a:not(.minji-brand):hover { color: #fff; }
 .minji-hero { display: grid; grid-template-columns: 1fr .85fr; align-items: center; gap: 90px; min-height: 470px; padding: 0 54px 25px; }
 .eyebrow { display: flex; align-items: center; gap: 8px; margin: 0 0 13px; color: #9df2c3; font-size: 10px; font-weight: 800; letter-spacing: 1.7px; }.eyebrow i { width: 7px; height: 7px; border-radius: 50%; background: #5cf0a1; box-shadow: 0 0 0 5px rgba(92,240,161,.1), 0 0 16px #5cf0a1; }
 .hero-copy h1 { margin: 0; font: 600 clamp(45px, 5vw, 72px)/.97 Fredoka, sans-serif; letter-spacing: -1.8px; }.hero-copy h1 span { color: #f7d677; }
