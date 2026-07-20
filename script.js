@@ -11,6 +11,12 @@ const discordElements = {
   activityDetail: document.querySelector("#discord-activity-detail"),
   activityTime: document.querySelector("#discord-activity-time"),
 };
+const nowPlayingElements = {
+  link: document.querySelector("#now-playing"),
+  art: document.querySelector("#now-playing-art"),
+  title: document.querySelector("#now-playing-title"),
+  detail: document.querySelector("#now-playing-detail"),
+};
 
 copyButton.addEventListener("click", async () => {
   try {
@@ -38,6 +44,8 @@ function renderDiscordActivity(presence) {
   const spotify = presence.spotify;
   const activity = presence.activities.find(({ type }) => type === 0 || type === 4);
 
+  renderNowPlaying(spotify);
+
   if (spotify) {
     discordElements.activityIcon.textContent = "♫";
     discordElements.activityName.textContent = spotify.song;
@@ -58,6 +66,25 @@ function renderDiscordActivity(presence) {
   discordElements.activityName.textContent = "No active status";
   discordElements.activityDetail.textContent = "Say hello on Discord";
   discordElements.activityTime.textContent = "Live";
+}
+
+function renderNowPlaying(spotify) {
+  if (spotify) {
+    nowPlayingElements.art.textContent = "";
+    nowPlayingElements.art.style.backgroundImage = `url("${spotify.album_art_url}")`;
+    nowPlayingElements.title.textContent = spotify.song;
+    nowPlayingElements.detail.textContent = spotify.artist;
+    nowPlayingElements.link.href = `https://open.spotify.com/track/${spotify.track_id}`;
+    nowPlayingElements.link.setAttribute("aria-label", `Mở ${spotify.song} trên Spotify`);
+    return;
+  }
+
+  nowPlayingElements.art.textContent = "♫";
+  nowPlayingElements.art.style.backgroundImage = "";
+  nowPlayingElements.title.textContent = "Spotify is quiet";
+  nowPlayingElements.detail.textContent = "Open my playlist";
+  nowPlayingElements.link.href = "https://open.spotify.com/playlist/5muSk2zfQ3LI70S64jbrX7?si=3da250f020e94909";
+  nowPlayingElements.link.setAttribute("aria-label", "Mở Spotify playlist");
 }
 
 async function refreshDiscordPresence() {
@@ -81,6 +108,7 @@ async function refreshDiscordPresence() {
     setDiscordStatus("offline");
     discordElements.activityDetail.textContent = "Discord presence is unavailable right now";
     discordElements.activityTime.textContent = "Offline";
+    renderNowPlaying(null);
   }
 }
 

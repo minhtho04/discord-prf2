@@ -27,6 +27,12 @@
   transform: translateX(5px);
 }
 
+.album-art {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .discord-user {
   color: inherit;
   text-decoration: none;
