@@ -4,6 +4,7 @@ const copyButton = document.querySelector("#copy-discord");
 const toast = document.querySelector("#toast");
 const cursorGlow = document.querySelector("#cursor-glow");
 const ambientParticles = document.querySelector("#ambient-particles");
+const visitorCount = document.querySelector("#visitor-count");
 const discordElements = {
   avatar: document.querySelector("#discord-avatar"),
   name: document.querySelector("#discord-name"),
@@ -122,6 +123,26 @@ async function refreshDiscordPresence() {
   }
 }
 
+async function recordVisitor() {
+  if (window.location.hostname === "localhost") return;
+  try {
+    const response = await fetch("https://visitor.6developer.com/visit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        domain: "minhtho04.github.io",
+        page_path: window.location.pathname,
+        page_title: document.title,
+      }),
+    });
+    if (!response.ok) throw new Error("Visitor counter unavailable");
+    const { totalCount } = await response.json();
+    visitorCount.textContent = new Intl.NumberFormat("vi-VN").format(totalCount);
+  } catch {
+    visitorCount.textContent = "—";
+  }
+}
+
 function openPlayer(shouldPlay = true) {
   playerElements.embed.classList.add("is-open");
   playerElements.launch.setAttribute("aria-expanded", "true");
@@ -208,4 +229,5 @@ window.onSpotifyIframeApiReady = (IFrameAPI) => {
 };
 
 refreshDiscordPresence();
+recordVisitor();
 window.setInterval(refreshDiscordPresence, 60_000);
